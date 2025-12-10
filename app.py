@@ -44,7 +44,7 @@ class AgentDependencies(TypedDict):
 async def get_cable_ends_a(ctx: RunContext[AgentDependencies]) -> list[str]:
     print("calling get_cable_ends_a")
     return ["2.5mm Female", "2.5mm Male", "3.5mm Female", "3.5mm Male", "6.35mm Female", "6.35mm Male", "Power Type I - Australia Male", "BNC Female", "BNC Male", "Power Type N - Brazil Female", "Power Type N - Brazil Male", "Power Type C13 Female", "Power Type C14 Male", "Power Type C15 Female", "Power Type C19 Female", "Power Type C20 Male", "C21 coupler Female", "Power Type C5 Female", "Power Type C7 Female", "DB25 Female", "DB25 Male", "DB9 Female", "DB9 Male", "Power Type K - Denmark Female", "Power Type K - Denmark Male", "Powerstrip Type K - Denmark", "DisplayPort Female", "DisplayPort Male", "DVI-D Female", "DVI-D Male", "DVI-I Female", "DVI-I Male", "E2000 Male", "Power Type C - EU Male", "FC Male", "Powerstrip Type E - French", "HDMI Female", "HDMI Male", "HDMI Micro Male", "HDMI Mini Female", "HDMI Mini Male", "IEC Female", "IEC Male", "Power Type D - India Male", "Power Type L - Italy Male", "LC Female", "LC Male", "Lightning Female", "Lightning Male", "Mini DisplayPort Female", "Mini DisplayPort Male", "MPO/MTP Female", "MPO/MTP Male", "MTRJ Male", "MU/UPC Male", "Multi Male", "Open End", "PS/2 Female", "PS/2 Male", "QSFP+ Male", "RCA Female", "RCA Male", "RJ11 Female", "RJ11 Male", "RJ12 Male", "RJ45 Female", "RJ45 Male", "RP-SMA Female", "RP-SMA Male", "SATA 15-pin Female", "SATA 15-pin Male", "SATA 7-pin Female", "SATA 7-pin Male", "SC Female", "SC Male", "Power Type E/F - Schuko Female", "Power Type E/F - Schuko Male", "Powerstrip Type F - Schuko", "SFF Male", "SFP Male", "Power Type M - South Africa Male", "Speaker Raw Cable Male", "ST Male", "ST/UPC Male", "Power Type J - Switzerland Female", "Power Type J - Switzerland Male", "Thunderbolt Male", "TOSLINK Male", "Power Type G - UK Male", "Powerstrip Type G - UK", "Power Type A - USA Male", "Power Type B - USA Male", "USB A Female", "USB A Male", "USB B Female", "USB B Male", "USB C Female", "USB C Male", "USB Micro A Male", "USB Micro B Female", "USB Micro B Male", "USB Mini B Male", "VGA Female", "VGA Male", "XLR (3-pin) Female", "XLR (3-pin) Male"]
-    url = 'https://api.eetgroup.com/api/CableGuide/GetCableEndTypesA'
+    url = 'https://stage-api.eetgroup.com/api/CableGuide/GetCableEndTypesA'
     headers = {
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0',
         'Accept': 'application/json, text/plain, */*',
@@ -65,7 +65,7 @@ async def get_cable_ends_a(ctx: RunContext[AgentDependencies]) -> list[str]:
 
 async def get_cable_ends_b(ctx: RunContext[AgentDependencies], cable_end_a: str) -> list[str]:
     print(f"calling the get_cable_ends_b with {cable_end_a}")
-    url = f'https://api.eetgroup.com/api/CableGuide/GetCableEndTypesB?cableEndTypeA={cable_end_a}'
+    url = f'https://stage-api.eetgroup.com/api/CableGuide/GetCableEndTypesB?cableEndTypeA={cable_end_a}'
     headers = {
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0',
         'Accept': 'application/json, text/plain, */*',
@@ -389,7 +389,7 @@ async def get_order_status(ctx: RunContext[AgentDependencies], user_query: str) 
         print("No order ID found, will fetch latest order")
 
     # Build API request
-    url = "http://localhost:2080/api/AiSearch/OrderStatus"
+    url = "https://stage-api.eetgroup.com/api/AiSearch/OrderStatus"
     params = {
         "customerId": ctx.deps["customer_id"],
         "language": ctx.deps["language"],
